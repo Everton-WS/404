@@ -1,13 +1,13 @@
-docker run --name <container_name> \
- -e NODE_DB_HOST=<host>\
- -e NODE_DB_PORT=<port> \
- -e NODE_DB_USER=<user> \
- -e NODE_DB_PASS=<pass> \
- -e NODE_DB_SCHEMA=<schema> \
+docker run --name xxxxxxx \
+ -e NODE_DB_HOST=xxx \
+ -e NODE_DB_PORT=xxx \
+ -e NODE_DB_USER=xxx \
+ -e NODE_DB_PASS=xxx \
+ -e NODE_DB_SCHEMA=xxx \
 -p 3000:3000   -it node
 
 
 aws lightsail push-container-image \
-		--region <zone> \
-		--service-name <service_name> \
-		--label <label> --image node:latest
+		--region yyyyyy \
+		--service-name yyyyyy \
+		--label yyyyyy --image node:latest
