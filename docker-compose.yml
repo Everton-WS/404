@@ -20,9 +20,8 @@ services:
     image: wordpress:latest
     container_name: wordpress1
     expose:
-      - "81"
+      - "80"
     environment:
-      APACHE_LISTEN_PORT: 81
 
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_USER: ${DB_USER}
@@ -35,7 +34,7 @@ services:
     image: wordpress:latest
     container_name: wordpress2
     expose:
-      - "82"
+      - "80"
     environment:
 
       WORDPRESS_DB_HOST: ${DB_HOST}
