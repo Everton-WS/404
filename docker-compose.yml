@@ -1,0 +1,47 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_docker-compose
+    ports: 
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/index.html:/usr/share/nginx/html/index.html
+    networks:
+      - app_404
+    depends_on:
+      - wordpress1
+      - wordpress2
+
+  wordpress1:
+    image: wordpress:latest
+    container_name: wordpress1
+    expose:
+      - "81"
+    environment:
+      APACHE_LISTEN_PORT: 81
+      WORDPRESS_DB_USER: dbmasteruser
+      WORDPRESS_DB_HOST: ls-ab67b6320b508392576fed640eebddfd690609fb.cneqr094vwzb.ap-northeast-1.rds.amazonaws.com
+      WORDPRESS_DB_PASSWORD: uY4QoDjIYVbQhSUN*5ft7kTDi33d
+      WORDPRESS_DB_NAME: dbwordpress
+    networks:
+      - app_404
+      
+  wordpress2:
+    image: wordpress:latest
+    container_name: wordpress2
+    expose:
+      - "82"
+    environment:
+      APACHE_LISTEN_PORT: 82
+      WORDPRESS_DB_USER: dbmasteruser
+      WORDPRESS_DB_HOST: ls-ab67b6320b508392576fed640eebddfd690609fb.cneqr094vwzb.ap-northeast-1.rds.amazonaws.com
+      WORDPRESS_DB_PASSWORD: uY4QoDjIYVbQhSUN*5ft7kTDi33d
+      WORDPRESS_DB_NAME: dbwordpress
+    networks:
+      - app_404
+networks:
+  app_404:
+    driver: bridge
+
