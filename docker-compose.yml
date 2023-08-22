@@ -21,10 +21,11 @@ services:
       - "81"
     environment:
       APACHE_LISTEN_PORT: 81
-      WORDPRESS_DB_USER: dbmasteruser
-      WORDPRESS_DB_HOST: ls-ab67b6320b508392576fed640eebddfd690609fb.cneqr094vwzb.ap-northeast-1.rds.amazonaws.com
-      WORDPRESS_DB_PASSWORD: uY4QoDjIYVbQhSUN*5ft7kTDi33d
-      WORDPRESS_DB_NAME: dbwordpress
+
+      WORDPRESS_DB_HOST: ${DB_HOST}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_SCHEMA}
     networks:
       - app_404
       
@@ -35,10 +36,10 @@ services:
       - "82"
     environment:
       APACHE_LISTEN_PORT: 82
-      WORDPRESS_DB_USER: dbmasteruser
-      WORDPRESS_DB_HOST: ls-ab67b6320b508392576fed640eebddfd690609fb.cneqr094vwzb.ap-northeast-1.rds.amazonaws.com
-      WORDPRESS_DB_PASSWORD: uY4QoDjIYVbQhSUN*5ft7kTDi33d
-      WORDPRESS_DB_NAME: dbwordpress
+      WORDPRESS_DB_HOST: ${DB_HOST}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_SCHEMA}
     networks:
       - app_404
 networks:
