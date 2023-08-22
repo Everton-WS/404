@@ -1,2 +1,6 @@
 .env
 
+/node/node_modules/
+/java/target/
+
+/java/mvnw
