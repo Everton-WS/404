@@ -13,6 +13,7 @@ services:
     depends_on:
       - wordpress1
       - wordpress2
+      - app_node
 
   wordpress1:
     image: wordpress:latest
@@ -35,13 +36,30 @@ services:
     expose:
       - "82"
     environment:
-      APACHE_LISTEN_PORT: 82
+
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_SCHEMA}
     networks:
       - app_404
+
+  app_node:
+    image: patrickbnu/app_node:latest
+    container_name: app_node
+    expose:
+      - "3000"
+    environment:
+
+      NODE_DB_HOST: ${DB_HOST}
+      NODE_DB_PORT: ${DB_PORT}
+      NODE_DB_USER: ${DB_USER}
+      NODE_DB_PASS: ${DB_PASSWORD}
+      NODE_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
+    networks:
+      - app_404
+
+
 networks:
   app_404:
     driver: bridge

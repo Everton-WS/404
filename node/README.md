@@ -1,3 +1,7 @@
+docker build .
+
+
+
 docker run --name xxxxxxx \
  -e NODE_DB_HOST=xxx \
  -e NODE_DB_PORT=xxx \
