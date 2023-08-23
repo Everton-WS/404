@@ -1,6 +1,8 @@
 .env
 
-/node/node_modules/
-/java/target/
+/data/certbot/
 
-/java/mvnw
+/node/node_modules/
+
+/java/target/
+/java/mvnw*
