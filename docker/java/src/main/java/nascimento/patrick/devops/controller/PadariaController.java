@@ -23,6 +23,13 @@ public class PadariaController {
 		return padariaService.getAllBakeries();
 
 	}
+	
+	@GetMapping("/")
+	public List<Bakery> getMAIN() {
+
+		return padariaService.getAllBakeries();
+
+	}
 
 	@PostMapping("/insertbakery")
 	public void insertBakery(@RequestBody Bakery bakery) {
