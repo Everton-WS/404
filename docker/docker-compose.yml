@@ -52,12 +52,26 @@ services:
     expose:
       - "3000"
     environment:
-
       NODE_DB_HOST: ${DB_HOST}
       NODE_DB_PORT: ${DB_PORT}
       NODE_DB_USER: ${DB_USER}
       NODE_DB_PASS: ${DB_PASSWORD}
       NODE_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
+    networks:
+      - app_404
+
+
+  app_java:
+    image: patrickbnu/app_java:latest
+    container_name: app_java
+    expose:
+      - "8080"
+    environment:
+      JAVA_DB_HOST: ${DB_HOST}
+      JAVA_DB_PORT: ${DB_PORT}
+      JAVA_DB_USER: ${DB_USER}
+      JAVA_DB_PASS: ${DB_PASSWORD}
+      JAVA_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
     networks:
       - app_404
 
