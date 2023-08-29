@@ -48,6 +48,7 @@ services:
       NODE_DB_PASS: ${DB_PASSWORD}
       NODE_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
     volumes:
+      - ./var/log/letsencrypt/letsencrypt.log:/var/log/letsencrypt/letsencrypt.log
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     networks:
@@ -66,6 +67,7 @@ services:
       JAVA_DB_PASS: ${DB_PASSWORD}
       JAVA_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
     volumes:
+      - ./var/log/letsencrypt/letsencrypt.log:/var/log/letsencrypt/letsencrypt.log
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     networks:
