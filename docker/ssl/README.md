@@ -70,6 +70,8 @@ server {
     }
 ```
 
+Feito isso, tecle Esc, digite :x para salvar as alterações e tecle enter.
+
 ## Passo 8: Execução do Docker Compose
 
 Agora que os certificados estão configurados, só executar o docker-compose.yml para iniciar os serviços.
