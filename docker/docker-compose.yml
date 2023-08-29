@@ -35,7 +35,9 @@ services:
       - app_404
 
   app_node:
-    image: patrickbnu/app_node:latest
+    build: 
+      context: ./node  
+      dockerfile: Dockerfile 
     container_name: app_node
     expose:
       - "3000"
@@ -96,7 +98,7 @@ services:
     depends_on:
       - wordpress1
       - wordpress2
-    #  - app_node
+      - app_node
 
 
 networks:
