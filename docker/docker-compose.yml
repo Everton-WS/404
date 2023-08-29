@@ -1,28 +1,11 @@
 version: '3'
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx_docker-compose
-    ports: 
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/index.html:/usr/share/nginx/html/index.html
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    networks:
-      - app_404
-    depends_on:
-      - wordpress1
-      - wordpress2
-      - app_node
-
   wordpress1:
     image: wordpress:latest
     container_name: wordpress1
     expose:
       - "80"
+      - "443"
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_USER: ${DB_USER}
@@ -39,6 +22,7 @@ services:
     container_name: wordpress2
     expose:
       - "80"
+      - "443"
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_USER: ${DB_USER}
@@ -50,22 +34,22 @@ services:
     networks:
       - app_404
 
-  app_node:
-    image: patrickbnu/app_node:latest
-    container_name: app_node
-    expose:
-      - "3000"
-    environment:
-      NODE_DB_HOST: ${DB_HOST}
-      NODE_DB_PORT: ${DB_PORT}
-      NODE_DB_USER: ${DB_USER}
-      NODE_DB_PASS: ${DB_PASSWORD}
-      NODE_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    networks:
-      - app_404
+ #  app_node:
+ #   image: patrickbnu/app_node:latest
+ #   container_name: app_node
+ #   expose:
+ #     - "3000"
+ #   environment:
+ #     NODE_DB_HOST: ${DB_HOST}
+ #     NODE_DB_PORT: ${DB_PORT}
+ #     NODE_DB_USER: ${DB_USER}
+ #     NODE_DB_PASS: ${DB_PASSWORD}
+ #     NODE_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
+ #   volumes:
+ #     - ./data/certbot/conf:/etc/letsencrypt
+ #     - ./data/certbot/www:/var/www/certbot
+ #   networks:
+ #     - app_404
 
 
   app_java:
@@ -90,6 +74,30 @@ services:
      volumes:
        - ./data/certbot/conf:/etc/letsencrypt
        - ./data/certbot/www:/var/www/certbot 
+     networks:
+       - app_404
+
+  nginx:
+    build: 
+      context: ./nginx  
+      dockerfile: Dockerfile 
+    container_name: nginx_docker-compose
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./var/log/letsencrypt/letsencrypt.log:/var/log/letsencrypt/letsencrypt.log
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/index.html:/usr/share/nginx/html/index.html
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    networks:
+      - app_404
+    depends_on:
+      - wordpress1
+      - wordpress2
+   #  - app_node
+
 
 networks:
   app_404:
