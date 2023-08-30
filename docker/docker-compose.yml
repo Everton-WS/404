@@ -77,8 +77,8 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/index.html:/usr/share/nginx/html/index.html
-      - ./data/certbot/conf/fullchain1.pem:/etc/letsencrypt/live/404.sol.app.br/fullchain.pem;
-      - ./data/certbot/conf/privkey.pem:/etc/letsencrypt/live/404.sol.app.br/privkey.pem
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     networks:
       - app_404
     depends_on:
