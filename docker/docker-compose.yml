@@ -63,7 +63,7 @@ services:
 
   app_django:
     build:
-      context: .
+      context: ./django
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
