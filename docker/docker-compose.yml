@@ -58,6 +58,21 @@ services:
     networks:
       - app_404
 
+  app_django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DB_SCHEMA: ${SYSTEMS_DB_SCHEMA}
+      DJANGO_DB_USER: ${DB_USER}
+      DJANGO_DB_PASS: ${DB_PASSWORD}
+      DJANGO_DB_HOST: ${DB_HOST}
+      DJANGO_DB_PORT: ${DB_PORT}
+    networks:
+      - app_404
+
   # certbot:
   #    image: certbot/certbot
   #    volumes:
