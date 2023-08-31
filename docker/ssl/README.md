@@ -46,7 +46,11 @@ Volte ao terminal onde você executou o comando do Passo 3 e aguarde a confirma�
 
 ## Passo 6: Localização dos Certificados
 
-Os certificados gerados pelo Certbot estarão localizados em um diretório específico. Você pode encontrar os certificados em /etc/letsencrypt/live/seudominio.com.br/
+Os certificados gerados pelo Certbot estarão localizados em um diretório específico. Você deverá encontrar os certificados em /etc/letsencrypt/live/seudominio.com.br/ e copiá-los para /caminho-para-pasta/docker/data/certbot/conf/live/seudominio.com.br, usando o seguinte comando para manter permissões e grupo:
+
+```bash
+sudo rsync -avz --chmod=ugo=rwX --chown=root:root /caminho/do/diretorio_origem/certbot/ /caminho/do/diretorio_destino/
+```
 
 ## Passo 7: Configuração do SSL no Nginx
 
