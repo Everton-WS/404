@@ -46,6 +46,9 @@ services:
 
   app_java:
     image: patrickbnu/app_java:latest
+    #build: 
+    #  context: ./java  
+    #  dockerfile: Dockerfile 
     container_name: app_java
     expose:
       - "8080"
