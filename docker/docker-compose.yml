@@ -63,7 +63,7 @@ services:
 
   app_django:
     build:
-      context: ./app_django
+      context: ./django
       dockerfile: Dockerfile
     container_name: app_django
     ports:
