@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "epwz2+UhwLyOfxqSZnchCD6fscwPeUgDOG/C+0dXwpWd/3QY7YjmFIz4eAQ84SBEW3W58r0KYvfFX0/IEW7H/A==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\mathe\\devops\\docker_aula\\exercicio_3-complexo\\DevOps-404\\docker\\c_sharp\\BakeryService\\BakeryService.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Não foi possível resolver 'MySqlConnector (>= 2.2.5)' para 'net7.0'.",
+      "libraryId": "MySqlConnector",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}
