@@ -8,3 +8,4 @@
       <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/patrickbnu/404/main/assets/404.svg">
     </picture>
 </div>
+
